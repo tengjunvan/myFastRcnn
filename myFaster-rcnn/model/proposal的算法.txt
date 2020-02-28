@@ -1,0 +1,18 @@
+基本系数：
+nms_thresh = 0.7
+n_train_pre_nms = 12000
+n_train_post_nms = 2000
+n_test_pre_nms = 6000
+n_test_post_nms = 300
+min_size = 16
+算法：
+1.convert the loc predictions from the rpn network to bbox [y1, x1, y2, x2] format.
+通过rpn网络对anchor进行一个“修正”，而不是直接利用rpn的输入anchor进行
+2.clip the predicted boxes to the image
+3.Remove predicted boxes with either height or width < threshold (min_size).
+对过于小的box进行删除
+4.Sort all (proposal, score) pairs by score from highest to lowest.
+排序（这里的score不清楚是哪一个，是cls还是总体的rpn score）
+5.Take top pre_nms_topN (e.g. 12000 while training and 300 while testing).
+6.Apply nms threshold > 0.7
+7.Take top pos_nms_topN (e.g. 2000 while training and 300 while testing)
