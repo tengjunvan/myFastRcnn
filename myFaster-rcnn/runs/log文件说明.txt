@@ -1,0 +1,6 @@
+runs文件夹下是训练log，包括了
+1. 200 batch的平均running loss
+2. 1个epoch的平均training loss
+3. 1个epoch的平均test loss
+
+该log是为了使用tensorboard来进行可视化的
